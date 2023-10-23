@@ -25,10 +25,11 @@ const displayAppData = (() => {
       if (response.ok) {
         axios.get(`${apiUrl}&appid=${apiKey}`).then((find) => {
           console.log(find);
-          let temp = Math.round(find.data.main.temp);
+          tempCelsius = find.data.main.temp;
+          let temp = Math.round(tempCelsius);
           let city = find.data.name;
           let humidity = find.data.main.humidity;
-          let wind = Math.round(find.data.wind.speed);
+          let wind = Math.round(find.data.wind.speed * 3.6);
           let description = find.data.weather[0].description;
           formatNewCity(city, temp, humidity, wind, description);
           changeIcon(description);
@@ -42,11 +43,6 @@ const displayAppData = (() => {
   }
 
   function formatNewCity(city, temp, humidity, wind, description) {
-    let currentCityCell = document.getElementById("current-city");
-    let currentTempCell = document.getElementById("current-temp-value");
-    let currentHumidity = document.getElementById("current-humidity");
-    let currentWind = document.getElementById("current-wind");
-    let currentDescription = document.getElementById("current-description");
     currentCityCell.textContent = city;
     currentTempCell.textContent = temp;
     currentDescription.textContent = description;
@@ -91,17 +87,46 @@ const displayAppData = (() => {
     }
   }
 
-  getApiUrl("Bordeaux");
+  function getTempType(e, celsius) {
+    e.preventDefault();
+    degreesC.classList.toggle("hidden");
+    degreesF.classList.toggle("hidden");
+    celsius
+      ? (currentTempCell.innerText = Math.round(tempCelsius))
+      : (currentTempCell.innerText = Math.round((tempCelsius * 9) / 5 + 32));
+  }
 
+  let celsius = true;
+  let tempCelsius = null;
+  let currentCityCell = document.getElementById("current-city");
+  let currentTempCell = document.getElementById("current-temp-value");
+  let currentHumidity = document.getElementById("current-humidity");
+  let currentWind = document.getElementById("current-wind");
+  let currentDescription = document.getElementById("current-description");
+  let degreesC = document.getElementById("degrees-c");
+  let degreesF = document.getElementById("degrees-f");
   let userSearchForm = document.getElementById("search-cities");
+  let currentLocationBtn = document.getElementById("current-location-btn");
+
+  degreesC.addEventListener("click", (e) => {
+    celsius = true;
+    getTempType(e, celsius);
+  });
+
+  degreesF.addEventListener("click", (e) => {
+    celsius = false;
+    getTempType(e, celsius);
+  });
+
   userSearchForm.addEventListener("submit", (e) => {
     getNewCity(e);
   });
 
-  let currentLocationBtn = document.getElementById("current-location-btn");
   currentLocationBtn.addEventListener("click", () => {
     getUserLocation();
   });
+
+  getApiUrl("Bordeaux");
 })();
 
 const displayDayTime = (() => {
@@ -117,19 +142,11 @@ const displayDayTime = (() => {
       "Saturday",
     ];
     let day = days[now.getDay()];
-    let hour = now.getHours();
-    let minutes = now.getMinutes();
+    let hour = String(now.getHours()).padStart(2, "0");
+    let minutes = String(now.getMinutes()).padStart(2, "0");
 
-    if (hour < 10) {
-      hour = `0${hour}`;
-    }
-
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
     return (currentDayTime.textContent = `${day} · ${hour}:${minutes}`);
   }
-
   let now = new Date();
   getDayTime(now);
 })();

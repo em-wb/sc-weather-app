@@ -27,14 +27,19 @@
     <div class="app-ctr container">
       <form id="search-cities" action="">
         <div class="row search-ctr">
-          <div class="col-9 input-ctr">
+          <div class="col-10 input-ctr">
             <input id="new-city" type="text" placeholder="Enter a city" />
             <button type="submit" class="">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-magnifying-glass" alt="Search"></i>
             </button>
           </div>
-          <button type="button" class="col-3" id="current-location-btn">
-            Current Location
+          <button
+            type="button"
+            class="col-2"
+            id="current-location-btn"
+            alt="Current location"
+          >
+            <i class="fa-solid fa-location-dot"></i>
           </button>
         </div>
       </form>
@@ -45,11 +50,10 @@
         </div>
         <h2 class="col-3 current temp-cell">
           <strong
-            ><span id="current-temp-value"></span>°<small
-              >C
-              <!-- <a href="" id="degrees-c">C</a> 
+            ><span id="current-temp-value"></span>°<small>
+              <a href="" id="degrees-c">C</a>
               |
-              <a href="" id="degrees-f" class="hidden">F</a> -->
+              <a href="" id="degrees-f" class="hidden">F</a>
             </small></strong
           >
         </h2>
@@ -59,10 +63,10 @@
           <span id="current-day-time"></span> ·
           <span class="description" id="current-description"></span><br />
           Humidity <span id="current-humidity"></span>% · Wind
-          <span id="current-wind"></span>m/s
+          <span id="current-wind"></span>km/h
         </div>
       </div>
-      <div class="row five-day-ctr">
+      <!-- <div class="row five-day-ctr">
         <div class="col">
           <div class="row">
             <h3 class="col five-day">TUE</h3>
@@ -103,12 +107,13 @@
             <div class="col five-day"><strong>18°</strong> 18°</div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="row"></div>
     </div>
     <footer>
-      <a href="https://github.com/em-wb/sc-weather-app">Open-source code </a
-      ><span>by Emily</span>
+      <a href="https://github.com/em-wb/sc-weather-app" target="_blank"
+        >Open-source code</a
+      ><span> by Emily</span>
     </footer>
     <script src="./src/app.js"></script>
   </body>

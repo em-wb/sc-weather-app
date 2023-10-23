@@ -1,0 +1,156 @@
+body {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+  background-color: #87ceeb;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  color: #2e6b8e;
+  background-color: #f5f5f5;
+}
+
+input:hover {
+  border: none;
+  opacity: 0.8;
+}
+
+input:focus {
+  outline: none;
+}
+
+::placeholder {
+  opacity: 0.8;
+}
+
+input,
+button {
+  border-radius: 4px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  transition: all 200ms ease-in-out;
+  border: none;
+}
+
+button {
+  background-color: #2e6b8e;
+  color: #f5f5f5;
+  font-size: 20px;
+  padding: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h1,
+h2 {
+  font-size: 48px;
+}
+
+h2 small {
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+small {
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+}
+
+i {
+  font-size: 30px;
+}
+
+footer span {
+  color: #2e6b8e;
+  font-weight: 700;
+}
+
+a {
+  color: black;
+}
+
+.hidden {
+  color: #2e6b8e;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.app-ctr {
+  font-family: "Nunito Sans", sans-serif;
+  width: 800px;
+  min-width: 480px;
+  padding: 40px;
+  border: solid 1px black;
+  border-radius: 8px;
+  box-shadow: 9px 9px 0px 0 #000000;
+}
+
+.input-ctr {
+  display: flex;
+}
+
+.current-ctr {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.current.city-cell {
+  text-transform: capitalize;
+}
+
+.icon-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp-cell {
+  text-align: center;
+}
+
+.current-icon {
+  font-size: 72px;
+}
+
+.description {
+  text-transform: capitalize;
+}
+
+.fa-sun {
+  color: #ffd700;
+}
+
+.fa-cloud-showers-heavy,
+.fa-temperature-half {
+  color: #2e6b8e;
+}
+.fa-cloud-sun {
+  color: #ffa500;
+}
+
+.five-day-ctr {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 8px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.five-day {
+  text-align: center;
+}

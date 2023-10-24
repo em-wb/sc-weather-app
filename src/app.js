@@ -69,7 +69,8 @@ const displayAppData = (() => {
   function formatNewCity(city, temp, humidity, wind, description) {
     currentCityCell.textContent = city;
     currentTempCell.textContent = temp;
-    currentDescription.textContent = description;
+    currentDescription.textContent =
+      description.charAt(0).toUpperCase() + description.slice(1);
     currentHumidity.textContent = humidity;
     currentWind.textContent = wind;
   }

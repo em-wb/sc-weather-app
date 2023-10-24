@@ -137,6 +137,10 @@ small a {
 }
 
 .description {
+  display: inline;
+}
+
+.description::first-letter {
   text-transform: capitalize;
 }
 

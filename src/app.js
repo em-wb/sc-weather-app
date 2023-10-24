@@ -20,6 +20,34 @@ const displayAppData = (() => {
     getCityData(apiUrl, apiKey);
   }
 
+  function getDayTime(utcMilliseconds) {
+    console.log(`milli ${utcMilliseconds}`);
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    let full = new Date(utcMilliseconds);
+    console.log("full", full);
+    let day = days[full.getUTCDay()];
+    let hours = String(full.getUTCHours()).padStart(2, "0");
+    let minutes = String(full.getUTCMinutes()).padStart(2, "0");
+    console.log("test", day, hours, ":", minutes);
+    // let day = days[new Date(utcMilliseconds).getUTCDay()];
+    // let hours = new Date(utcMilliseconds).getUTCHours();
+    // let day = days[date.getDay()];
+    // let hour = String(localTimestamp.getHours()).padStart(2, "0");
+    // console.log(hour);
+    // let minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return (currentDayTime.textContent = `${day} · ${hours}:${minutes}`);
+  }
+
   function getCityData(apiUrl, apiKey) {
     fetch(`${apiUrl}&appid=${apiKey}`).then((response) => {
       if (response.ok) {
@@ -31,6 +59,10 @@ const displayAppData = (() => {
           let humidity = find.data.main.humidity;
           let wind = Math.round(find.data.wind.speed * 3.6);
           let description = find.data.weather[0].description;
+          let time = getDayTime(
+            (parseInt(find.data.dt, 10) + parseInt(find.data.timezone, 10)) *
+              1000
+          );
           formatNewCity(city, temp, humidity, wind, description);
           changeIcon(description);
         });
@@ -42,7 +74,7 @@ const displayAppData = (() => {
     });
   }
 
-  function formatNewCity(city, temp, humidity, wind, description) {
+  function formatNewCity(city, temp, humidity, wind, description, time) {
     currentCityCell.textContent = city;
     currentTempCell.textContent = temp;
     currentDescription.textContent = description;
@@ -107,6 +139,7 @@ const displayAppData = (() => {
   let degreesF = document.getElementById("degrees-f");
   let userSearchForm = document.getElementById("search-cities");
   let currentLocationBtn = document.getElementById("current-location-btn");
+  let currentDayTime = document.getElementById("current-day-time");
 
   degreesC.addEventListener("click", (e) => {
     celsius = true;
@@ -127,26 +160,4 @@ const displayAppData = (() => {
   });
 
   getApiUrl("Bordeaux");
-})();
-
-const displayDayTime = (() => {
-  function getDayTime(now) {
-    let currentDayTime = document.getElementById("current-day-time");
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let day = days[now.getDay()];
-    let hour = String(now.getHours()).padStart(2, "0");
-    let minutes = String(now.getMinutes()).padStart(2, "0");
-
-    return (currentDayTime.textContent = `${day} · ${hour}:${minutes}`);
-  }
-  let now = new Date();
-  getDayTime(now);
 })();

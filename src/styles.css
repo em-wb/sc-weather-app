@@ -158,3 +158,14 @@ a {
 .five-day {
   text-align: center;
 }
+
+.logo {
+  color: #2e6b8e;
+  font-size: 30px;
+}
+
+.test {
+  display: flex;
+  align-items: center;
+  border: black 1px solid;
+}

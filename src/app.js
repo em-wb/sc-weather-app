@@ -52,7 +52,7 @@ const displayAppData = (() => {
           let description = find.data.weather[0].description;
           formatNewCity(city, temp, humidity, wind, description);
 
-          let icon = find.data.weather[0].icon;
+          icon = find.data.weather[0].icon;
 
           changeIcon(icon, description);
 
@@ -79,6 +79,35 @@ const displayAppData = (() => {
     let currentIcon = document.getElementById("current-icon");
     currentIcon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     currentIcon.alt = description;
+    dayNight(icon);
+  }
+
+  function dayNight(sky) {
+    let darkLight = document.querySelectorAll(".dark-light");
+    let btns = document.querySelectorAll(".btn");
+    sky = sky.slice(2);
+    console.log(sky);
+    if (sky === "n") {
+      darkLight.forEach((element) => {
+        element.classList.add("dark");
+      });
+      // appBg.classList.add("dark");
+      // degreesC.style.color = "white";
+      // degreesF.style.color = "white";
+      btns.forEach((btn) => {
+        btn.classList.add("dark-btn");
+      });
+    } else if (sky === "d") {
+      darkLight.forEach((element) => {
+        element.classList.remove("dark");
+      });
+      btns.forEach((btn) => {
+        btn.classList.remove("dark-btn");
+      });
+      //   degreesC.style.color = "black";
+      //   degreesF.style.color = "black";
+      // }
+    }
   }
 
   function getUserLocation() {
@@ -109,6 +138,7 @@ const displayAppData = (() => {
   }
 
   let celsius = true;
+  let icon = null;
   let tempCelsius = null;
   let currentCityCell = document.getElementById("current-city");
   let currentTempCell = document.getElementById("current-temp-value");

@@ -24,18 +24,18 @@
     <title>Weather app</title>
   </head>
   <body>
-    <div class="app-ctr container">
+    <div class="app-ctr dark-light container">
       <form id="search-cities" action="">
         <div class="row search-ctr">
           <div class="col-10 input-ctr">
             <input id="new-city" type="text" placeholder="Enter a city" />
-            <button type="submit" class="">
+            <button type="submit" class="btn">
               <i class="fa-solid fa-magnifying-glass" alt="Search"></i>
             </button>
           </div>
           <button
             type="button"
-            class="col-2"
+            class="col-2 btn"
             id="current-location-btn"
             alt="Current location"
           >
@@ -47,14 +47,13 @@
         <h1 class="col-7 current city-cell" id="current-city"></h1>
         <div class="col-2 current icon-cell">
           <img src="" alt="" id="current-icon" />
-          <!-- <i id="current-icon" class=""></i> -->
         </div>
         <h2 class="col-3 current temp-cell">
           <strong
             ><span id="current-temp-value"></span>°<small>
-              <a href="" id="degrees-c">C</a>
+              <a href="" id="degrees-c" class="dark-light">C</a>
               |
-              <a href="" id="degrees-f" class="hidden">F</a>
+              <a href="" id="degrees-f" class="hidden dark-light">F</a>
             </small></strong
           >
         </h2>
@@ -69,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="row five-day-ctr">
+      <!-- <div class="row five-day-ctr">
         <div class="col">
           <div class="row">
             <h3 class="col five-day">TUE</h3>
@@ -111,7 +110,7 @@
           </div>
         </div>
       </div>
-      <div class="row"></div>
+      <div class="row"></div> -->
     </div>
     <footer>
       <a href="https://github.com/em-wb/sc-weather-app" target="_blank"

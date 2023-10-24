@@ -43,7 +43,6 @@ function getCityData(apiUrl, apiKey) {
   fetch(`${apiUrl}&appid=${apiKey}`).then((response) => {
     if (response.ok) {
       axios.get(`${apiUrl}&appid=${apiKey}`).then((find) => {
-        console.log(find);
         tempCelsius = find.data.main.temp;
         let temp = Math.round(tempCelsius);
         let city = find.data.name;
@@ -51,11 +50,8 @@ function getCityData(apiUrl, apiKey) {
         let wind = Math.round(find.data.wind.speed * 3.6);
         let description = find.data.weather[0].description;
         formatNewCity(city, temp, humidity, wind, description);
-
         icon = find.data.weather[0].icon;
-
         changeIcon(icon, description);
-
         getDayTime((find.data.dt + find.data.timezone) * 1000);
       });
     } else {
@@ -90,7 +86,6 @@ function dayNight(sky) {
   let darkLight = document.querySelectorAll(".dark-light");
   let btns = document.querySelectorAll(".btn");
   sky = sky.slice(2);
-  console.log(sky);
   if (sky === "n") {
     darkLight.forEach((element) => {
       element.classList.add("dark");

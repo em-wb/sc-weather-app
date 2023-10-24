@@ -51,8 +51,12 @@ const displayAppData = (() => {
           let wind = Math.round(find.data.wind.speed * 3.6);
           let description = find.data.weather[0].description;
           formatNewCity(city, temp, humidity, wind, description);
+
+          let icon = find.data.weather[0].icon;
+
+          changeIcon(icon, description);
+
           getDayTime((find.data.dt + find.data.timezone) * 1000);
-          changeIcon(description);
         });
       } else {
         alert(
@@ -70,23 +74,10 @@ const displayAppData = (() => {
     currentWind.textContent = wind;
   }
 
-  function changeIcon(description) {
+  function changeIcon(icon, description) {
     let currentIcon = document.getElementById("current-icon");
-    currentIcon.classList.remove(...currentIcon.classList);
-    currentIcon.classList.add("fa-solid");
-    currentIcon.classList.add("current-icon");
-    if (description.includes("rain")) {
-      currentIcon.classList.add("fa-cloud-showers-heavy");
-    } else if (description.includes("cloud") && !description.includes("rain")) {
-      currentIcon.classList.add("fa-cloud-sun");
-    } else if (
-      !description.includes("cloud") &&
-      (description.includes("sun") || description.includes("clear"))
-    ) {
-      currentIcon.classList.add("fa-sun");
-    } else {
-      currentIcon.classList.add("fa-temperature-half");
-    }
+    currentIcon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    currentIcon.alt = description;
   }
 
   function getUserLocation() {

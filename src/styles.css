@@ -3,7 +3,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 100px;
-  background-color: #87ceeb;
+  background-color: #fadadd;
 }
 
 input {
@@ -116,6 +116,10 @@ small a {
   border: solid 1px black;
   border-radius: 8px;
   box-shadow: 9px 9px 0px 0 #000000;
+}
+
+.light {
+  background-color: #87ceeb;
 }
 
 .input-ctr {

@@ -90,23 +90,19 @@ const displayAppData = (() => {
     if (sky === "n") {
       darkLight.forEach((element) => {
         element.classList.add("dark");
+        element.classList.remove("light");
       });
-      // appBg.classList.add("dark");
-      // degreesC.style.color = "white";
-      // degreesF.style.color = "white";
       btns.forEach((btn) => {
         btn.classList.add("dark-btn");
       });
     } else if (sky === "d") {
       darkLight.forEach((element) => {
         element.classList.remove("dark");
+        element.classList.add("light");
       });
       btns.forEach((btn) => {
         btn.classList.remove("dark-btn");
       });
-      //   degreesC.style.color = "black";
-      //   degreesF.style.color = "black";
-      // }
     }
   }
 

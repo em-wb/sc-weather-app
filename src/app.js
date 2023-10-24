@@ -44,12 +44,12 @@ function getCityData(apiUrl, apiKey) {
     if (response.ok) {
       axios.get(`${apiUrl}&appid=${apiKey}`).then((find) => {
         tempCelsius = find.data.main.temp;
-        let temp = Math.round(tempCelsius);
+        getTempType(celsius);
         let city = find.data.name;
         let humidity = find.data.main.humidity;
         let wind = Math.round(find.data.wind.speed * 3.6);
         let description = find.data.weather[0].description;
-        formatNewCity(city, temp, humidity, wind, description);
+        formatNewCity(city, humidity, wind, description);
         icon = find.data.weather[0].icon;
         changeIcon(icon, description);
         getDayTime((find.data.dt + find.data.timezone) * 1000);
@@ -62,13 +62,12 @@ function getCityData(apiUrl, apiKey) {
   });
 }
 
-function formatNewCity(city, temp, humidity, wind, description) {
+function formatNewCity(city, humidity, wind, description) {
   let currentCityCell = document.getElementById("current-city");
   let currentHumidity = document.getElementById("current-humidity");
   let currentWind = document.getElementById("current-wind");
   let currentDescription = document.getElementById("current-description");
   currentCityCell.textContent = city;
-  currentTempCell.textContent = temp;
   currentDescription.textContent =
     description.charAt(0).toUpperCase() + description.slice(1);
   currentHumidity.textContent = humidity;
@@ -123,13 +122,16 @@ function error(error) {
   }
 }
 
-function getTempType(e, celsius) {
-  e.preventDefault();
-  degreesC.classList.toggle("hidden");
-  degreesF.classList.toggle("hidden");
-  celsius
-    ? (currentTempCell.innerText = Math.round(tempCelsius))
-    : (currentTempCell.innerText = Math.round((tempCelsius * 9) / 5 + 32));
+function getTempType(celsius) {
+  if (celsius) {
+    degreesC.classList.remove("hidden");
+    degreesF.classList.add("hidden");
+    currentTempCell.innerText = Math.round(tempCelsius);
+  } else {
+    degreesF.classList.remove("hidden");
+    degreesC.classList.add("hidden");
+    currentTempCell.innerText = Math.round((tempCelsius * 9) / 5 + 32);
+  }
 }
 
 let celsius = true;
@@ -139,14 +141,16 @@ let currentTempCell = document.getElementById("current-temp-value");
 
 let degreesC = document.getElementById("degrees-c");
 degreesC.addEventListener("click", (e) => {
+  e.preventDefault();
   celsius = true;
-  getTempType(e, celsius);
+  getTempType(celsius);
 });
 
 let degreesF = document.getElementById("degrees-f");
 degreesF.addEventListener("click", (e) => {
+  e.preventDefault();
   celsius = false;
-  getTempType(e, celsius);
+  getTempType(celsius);
 });
 
 let userSearchForm = document.getElementById("search-cities");

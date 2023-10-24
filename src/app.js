@@ -21,7 +21,6 @@ const displayAppData = (() => {
   }
 
   function getDayTime(utcMilliseconds) {
-    console.log(`milli ${utcMilliseconds}`);
     let days = [
       "Sunday",
       "Monday",
@@ -32,18 +31,10 @@ const displayAppData = (() => {
       "Saturday",
     ];
 
-    let full = new Date(utcMilliseconds);
-    console.log("full", full);
-    let day = days[full.getUTCDay()];
-    let hours = String(full.getUTCHours()).padStart(2, "0");
-    let minutes = String(full.getUTCMinutes()).padStart(2, "0");
-    console.log("test", day, hours, ":", minutes);
-    // let day = days[new Date(utcMilliseconds).getUTCDay()];
-    // let hours = new Date(utcMilliseconds).getUTCHours();
-    // let day = days[date.getDay()];
-    // let hour = String(localTimestamp.getHours()).padStart(2, "0");
-    // console.log(hour);
-    // let minutes = String(date.getMinutes()).padStart(2, "0");
+    let date = new Date(utcMilliseconds);
+    let day = days[date.getUTCDay()];
+    let hours = String(date.getUTCHours()).padStart(2, "0");
+    let minutes = String(date.getUTCMinutes()).padStart(2, "0");
 
     return (currentDayTime.textContent = `${day} · ${hours}:${minutes}`);
   }
@@ -59,11 +50,8 @@ const displayAppData = (() => {
           let humidity = find.data.main.humidity;
           let wind = Math.round(find.data.wind.speed * 3.6);
           let description = find.data.weather[0].description;
-          let time = getDayTime(
-            (parseInt(find.data.dt, 10) + parseInt(find.data.timezone, 10)) *
-              1000
-          );
           formatNewCity(city, temp, humidity, wind, description);
+          getDayTime((find.data.dt + find.data.timezone) * 1000);
           changeIcon(description);
         });
       } else {
@@ -74,7 +62,7 @@ const displayAppData = (() => {
     });
   }
 
-  function formatNewCity(city, temp, humidity, wind, description, time) {
+  function formatNewCity(city, temp, humidity, wind, description) {
     currentCityCell.textContent = city;
     currentTempCell.textContent = temp;
     currentDescription.textContent = description;

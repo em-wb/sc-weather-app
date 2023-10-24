@@ -87,11 +87,16 @@ a {
   text-decoration: none;
 }
 
+small a {
+  cursor: auto;
+}
+
 .hidden {
   color: #2e6b8e;
   font-size: 18px;
   opacity: 0.8;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .app-ctr {
@@ -159,13 +164,6 @@ a {
   text-align: center;
 }
 
-.logo {
-  color: #2e6b8e;
-  font-size: 30px;
-}
-
 .test {
-  display: flex;
-  align-items: center;
   border: black 1px solid;
 }

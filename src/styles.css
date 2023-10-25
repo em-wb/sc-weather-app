@@ -112,7 +112,7 @@ small a {
 .app-ctr {
   font-family: "Nunito Sans", sans-serif;
   width: 800px;
-  min-width: 480px;
+  min-width: 800px;
   padding: 40px;
   border: solid 1px black;
   border-radius: 8px;
@@ -131,7 +131,6 @@ small a {
   display: flex;
   align-items: center;
   margin-top: 30px;
-  margin-bottom: 10px;
 }
 
 .current.city-cell {
@@ -139,11 +138,7 @@ small a {
 }
 
 .temp-cell {
-  text-align: center;
-}
-
-.current-icon {
-  font-size: 72px;
+  text-align: right;
 }
 
 .five-day-ctr {
@@ -161,8 +156,4 @@ small a {
 
 .desc::first-letter {
   text-transform: capitalize;
-}
-
-.test {
-  border: black 1px solid;
 }

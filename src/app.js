@@ -43,6 +43,7 @@ function getCityData(apiUrl, apiKey) {
   fetch(`${apiUrl}&appid=${apiKey}`).then((response) => {
     if (response.ok) {
       axios.get(`${apiUrl}&appid=${apiKey}`).then((find) => {
+        console.log(find);
         tempCelsius = find.data.main.temp;
         getTempType(celsius);
         let city = find.data.name;
@@ -53,11 +54,43 @@ function getCityData(apiUrl, apiKey) {
         icon = find.data.weather[0].icon;
         changeIcon(icon, description);
         getDayTime((find.data.dt + find.data.timezone) * 1000);
+        getForecast(find.data.coord);
       });
     } else {
       alert(
         "☹️ City not found. Please check you have entered a valid city and try again!"
       );
+    }
+  });
+}
+
+function getForecast(coord) {
+  console.log(coord);
+  let apiKey = "97c2f6a3b34509ac62090edc5d18d949";
+  const fiveDayCtr = document.getElementById("five-day-ctr");
+  let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiForecastUrl);
+  axios.get(apiForecastUrl).then((find) => {
+    console.log(find);
+    for (let i = 0; i < 5; i++) {
+      const forecastCard = document.createElement("div");
+      forecastCard.classList.add("col", "forecast-card", "test");
+      fiveDayCtr.append(forecastCard);
+      const dayForecastDiv = document.createElement("div");
+      dayForecastDiv.textContent = find.data.daily[i].dt;
+      forecastCard.append(dayForecastDiv);
+      const iconForecastDiv = document.createElement("div");
+      iconForecastDiv.textContent = find.data.daily[i].weather[0].icon;
+      forecastCard.append(iconForecastDiv);
+      const descForecastDiv = document.createElement("div");
+      descForecastDiv.textContent = find.data.daily[i].weather[0].description;
+      forecastCard.append(descForecastDiv);
+      const maxForecastDiv = document.createElement("strong");
+      maxForecastDiv.textContent = find.data.daily[i].temp.max;
+      forecastCard.append(maxForecastDiv);
+      const minForecastDiv = document.createElement("div");
+      minForecastDiv.textContent = find.data.daily[i].temp.max;
+      forecastCard.append(minForecastDiv);
     }
   });
 }
@@ -164,3 +197,19 @@ currentLocationBtn.addEventListener("click", () => {
 });
 
 getApiUrl("Bordeaux");
+
+function createForecast() {}
+
+createForecast();
+
+// function Forecast(day, icon, description, tempMin, tempMax) {
+//   return {
+//     day,
+//     icon,
+//     description,
+//     tempMin
+//     tempMax
+//   }
+// }
+
+// const getForecast = []

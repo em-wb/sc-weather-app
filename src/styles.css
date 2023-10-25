@@ -59,7 +59,8 @@ h3 {
   font-size: 18px;
 }
 
-small {
+small,
+.desc {
   font-size: 12px;
 }
 
@@ -149,28 +150,20 @@ small a {
   font-size: 72px;
 }
 
-.fa-sun {
-  color: #ffd700;
-}
-
-.fa-cloud-showers-heavy,
-.fa-temperature-half {
-  color: #2e6b8e;
-}
-.fa-cloud-sun {
-  color: #ffa500;
-}
-
 .five-day-ctr {
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
   padding: 20px;
   margin: 30px 0;
   border-radius: 8px;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
-.five-day {
+.forecast-card {
   text-align: center;
+}
+
+.desc::first-letter {
+  text-transform: capitalize;
 }
 
 .test {

@@ -97,7 +97,9 @@ function getForecast(coord, apiKey) {
       iconForecast.src = `https://openweathermap.org/img/wn/${find.data.daily[i].weather[0].icon}@2x.png`;
       const descForecastDiv = document.createElement("div");
       descForecastDiv.classList.add("desc");
-      descForecastDiv.textContent = find.data.daily[i].weather[0].description;
+      let description = find.data.daily[i].weather[0].description;
+      descForecastDiv.textContent = description;
+      iconForecast.alt = description;
       const maxForecastDiv = document.createElement("strong");
       maxForecastDiv.classList.add("temp");
       maxForecastDiv.textContent = `${Math.round(

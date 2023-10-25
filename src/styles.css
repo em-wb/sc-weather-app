@@ -113,6 +113,8 @@ small a {
   font-family: "Nunito Sans", sans-serif;
   width: 800px;
   min-width: 800px;
+  /* height: 573px; */
+  min-height: 573px;
   padding: 40px;
   border: solid 1px black;
   border-radius: 8px;
@@ -144,6 +146,7 @@ small a {
 .five-day-ctr {
   background-color: #9fb9c4;
   color: black;
+  min-height: 206px;
   padding: 20px;
   margin: 30px 0;
   border-radius: 8px;

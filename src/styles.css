@@ -128,18 +128,14 @@ small a {
 }
 
 .current-ctr {
-  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
 .current.city-cell {
   text-transform: capitalize;
-}
-
-.icon-cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .temp-cell {

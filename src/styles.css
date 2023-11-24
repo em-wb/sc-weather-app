@@ -142,7 +142,7 @@ small a {
 }
 
 .temp-cell {
-  text-align: right;
+  text-align: left;
 }
 
 .five-day-ctr {
@@ -168,10 +168,22 @@ small a {
     padding: 5%;
   }
 
+  h1,
+  h2 {
+    font-size: 35px;
+  }
   i {
     font-size: 15px;
   }
+
+  img {
+    width: 70px;
+  }
   .app-ctr {
     padding: 7%;
+  }
+
+  .current {
+    text-align: center;
   }
 }

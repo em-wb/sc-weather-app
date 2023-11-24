@@ -25,30 +25,34 @@
   </head>
   <body>
     <div class="app-ctr container dark-light">
-      <form id="search-cities" action="">
-        <div class="row search-ctr">
-          <div class="col-10 input-ctr">
+      <form id="search-cities" class="row search-ctr" action="">
+        <!-- <div class="row search-ctr"> -->
+        <div class="col d-flex">
+          <div class="col-10">
             <input id="new-city" type="text" placeholder="Enter a city" />
+          </div>
+          <div class="btn-ctr d-flex justify-content-around col-md-2">
             <button type="submit" class="btn">
               <i class="fa-solid fa-magnifying-glass" alt="Search"></i>
             </button>
+            <button
+              type="button"
+              class="btn"
+              id="current-location-btn"
+              alt="Current location"
+            >
+              <i class="fa-solid fa-location-dot"></i>
+            </button>
           </div>
-          <button
-            type="button"
-            class="col-2 btn"
-            id="current-location-btn"
-            alt="Current location"
-          >
-            <i class="fa-solid fa-location-dot"></i>
-          </button>
         </div>
+        <!-- </div> -->
       </form>
       <div class="row current-ctr">
-        <h1 class="col-7 current city-cell" id="current-city"></h1>
-        <div class="col-2 current icon-cell">
+        <h1 class="col-md-7 current city-cell" id="current-city"></h1>
+        <div class="col-md-2 current icon-cell">
           <img src="" alt="" id="current-icon" />
         </div>
-        <h2 class="col-3 current temp-cell">
+        <h2 class="col-md-3 current temp-cell">
           <strong
             ><span id="current-temp-value"></span>°<small>
               <a href="" id="degrees-c" class="dark-light">C</a>
@@ -59,7 +63,7 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-12 current">
+        <div class="col-md-12 current">
           <span id="current-day-time"></span> ·
           <span class="description" id="current-description"></span>
           <div>
@@ -68,9 +72,7 @@
           </div>
         </div>
       </div>
-      <div class="row five-day-ctr" id="five-day-ctr">
-        <!-- <div class="col" id="forecast"></div> -->
-      </div>
+      <div class="row five-day-ctr" id="five-day-ctr"></div>
     </div>
     <footer>
       <a href="https://github.com/em-wb/sc-weather-app" target="_blank"

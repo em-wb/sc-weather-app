@@ -165,10 +165,10 @@ small a {
 
 @media screen and (max-width: 992px) {
   body {
-    padding: 5%;
+    display: flex;
+    padding: 10% 3%;
   }
 
-  h1,
   h2 {
     font-size: 35px;
   }
@@ -181,9 +181,15 @@ small a {
   }
   .app-ctr {
     padding: 7%;
+    height: 90%;
+    box-shadow: none;
   }
 
   .current {
     text-align: center;
+  }
+
+  .five-day-ctr {
+    gap: 30px;
   }
 }
